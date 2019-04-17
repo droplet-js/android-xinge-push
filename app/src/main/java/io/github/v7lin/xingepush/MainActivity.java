@@ -23,10 +23,10 @@ public class MainActivity extends Activity {
         try {
             ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
             Log.d("TPush", "huawei appid: " + appInfo.metaData.get("com.huawei.hms.client.appid"));
-            Log.d("TPush", "xiaomi appid: " + appInfo.metaData.get("com.xiaomi.mipush.sdk.appid"));
-            Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.get("com.xiaomi.mipush.sdk.appkey"));
-            Log.d("TPush", "meizu appid: " + appInfo.metaData.get("com.meizu.cloud.pushsdk.appid"));
-            Log.d("TPush", "meizu appkey: " + appInfo.metaData.get("com.meizu.cloud.pushsdk.appkey"));
+            Log.d("TPush", "xiaomi appid: " + appInfo.metaData.getString("com.xiaomi.mipush.sdk.appid"));
+            Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.getString("com.xiaomi.mipush.sdk.appkey"));
+            Log.d("TPush", "meizu appid: " + appInfo.metaData.getString("com.meizu.cloud.pushsdk.appid"));
+            Log.d("TPush", "meizu appkey: " + appInfo.metaData.getString("com.meizu.cloud.pushsdk.appkey"));
 //            XGPushConfig.enableOtherPush(getApplicationContext(), true);
 //            XGPushConfig.setHuaweiDebug(true);
 //            XGPushConfig.setMiPushAppId(getApplicationContext(), appInfo.metaData.getString("com.xiaomi.mipush.sdk.appid"));
