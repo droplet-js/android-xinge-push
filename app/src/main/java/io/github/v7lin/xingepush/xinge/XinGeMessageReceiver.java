@@ -8,9 +8,6 @@ import com.tencent.android.tpush.XGPushRegisterResult;
 import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class XinGeMessageReceiver extends XGPushBaseReceiver {
 
     @Override

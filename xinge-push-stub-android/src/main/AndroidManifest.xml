@@ -3,16 +3,16 @@
     <application>
         <meta-data
             android:name="com.xiaomi.mipush.sdk.appid"
-            android:value="${XIAOMI_APPID}" />
+            android:value="\${XIAOMI_APPID}" />
         <meta-data
             android:name="com.xiaomi.mipush.sdk.appkey"
-            android:value="${XIAOMI_APPKEY}" />
+            android:value="\${XIAOMI_APPKEY}" />
 
         <meta-data
             android:name="com.meizu.cloud.pushsdk.appid"
-            android:value="${MEIZU_APPID}" />
+            android:value="\${MEIZU_APPID}" />
         <meta-data
             android:name="com.meizu.cloud.pushsdk.appkey"
-            android:value="${MEIZU_APPKEY}" />
+            android:value="\${MEIZU_APPKEY}" />
     </application>
 </manifest>

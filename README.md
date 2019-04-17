@@ -8,9 +8,9 @@
 
 * [信鸽推送-官方网站](http://xg.qq.com)
 * [信鸽推送-快速指南](https://xg.qq.com/docs/)
-* [华为推送]()
-* [小米推送]()
-* [魅族推送]()
+* [华为推送](https://developer.huawei.com/consumer/cn/service/hms/pushservice.html)
+* [小米推送](https://dev.mi.com/console/appservice/push.html)
+* [魅族推送](https://open.flyme.cn/open-web/views/push.html)
 
 ### snapshot
 

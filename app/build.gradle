@@ -22,14 +22,17 @@ android {
         versionCode VERSION_CODE
         versionName "${VERSION_NAME}"
 
+        // dex 突破 65535 的限制
+        multiDexEnabled true
+
         manifestPlaceholders = [
-                XG_ACCESS_ID: "2100250470",
-                XG_ACCESS_KEY: "A1R8TBS289UE",
-                HW_APPID: "华为的APPID",
-                XIAOMI_APPID: "小米的APPID",
-                XIAOMI_APPKEY: "小米的APPKEY",
-                MEIZU_APPID: "魅族的APPID",
-                MEIZU_APPKEY: "魅族的APPKEY"
+                XG_ACCESS_ID: "2100332123",
+                XG_ACCESS_KEY: "AB37EUU164GF",
+                HW_APPID: "100725115",
+                XIAOMI_APPID: "2882303761517988184",
+                XIAOMI_APPKEY: "5501798847184",
+                MEIZU_APPID: "1005186",
+                MEIZU_APPKEY: "c48edac06ec7407c84fdf57a3e20a729"
         ]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -38,6 +41,8 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            useProguard true
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

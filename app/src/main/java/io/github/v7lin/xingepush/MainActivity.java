@@ -1,6 +1,8 @@
 package io.github.v7lin.xingepush;
 
 import android.app.Activity;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,14 +20,23 @@ public class MainActivity extends Activity {
         // 开启debug日志数据
         XGPushConfig.enableDebug(this,true);
         // 开启厂商通道初始化代码
-        XGPushConfig.enableOtherPush(getApplicationContext(), true);
-        XGPushConfig.setHuaweiDebug(true);
-        XGPushConfig.setMiPushAppId(getApplicationContext(), "APPID");
-        XGPushConfig.setMiPushAppKey(getApplicationContext(), "APPKEY");
-        XGPushConfig.setMzPushAppId(this, "APPID");
-        XGPushConfig.setMzPushAppKey(this, "APPKEY");
+        try {
+            ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Log.d("TPush", "huawei appid: " + appInfo.metaData.get("com.huawei.hms.client.appid"));
+            Log.d("TPush", "xiaomi appid: " + appInfo.metaData.get("com.xiaomi.mipush.sdk.appid"));
+            Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.get("com.xiaomi.mipush.sdk.appkey"));
+            Log.d("TPush", "meizu appid: " + appInfo.metaData.get("com.meizu.cloud.pushsdk.appid"));
+            Log.d("TPush", "meizu appkey: " + appInfo.metaData.get("com.meizu.cloud.pushsdk.appkey"));
+//            XGPushConfig.enableOtherPush(getApplicationContext(), true);
+//            XGPushConfig.setHuaweiDebug(true);
+//            XGPushConfig.setMiPushAppId(getApplicationContext(), appInfo.metaData.getString("com.xiaomi.mipush.sdk.appid"));
+//            XGPushConfig.setMiPushAppKey(getApplicationContext(), appInfo.metaData.getString("com.xiaomi.mipush.sdk.appkey"));
+//            XGPushConfig.setMzPushAppId(getApplicationContext(), appInfo.metaData.getString("com.meizu.cloud.pushsdk.appid"));
+//            XGPushConfig.setMzPushAppKey(getApplicationContext(), appInfo.metaData.getString("com.meizu.cloud.pushsdk.appkey"));
+        } catch (PackageManager.NameNotFoundException ignore) {
+        }
         // token注册
-        XGPushManager.registerPush(this, new XGIOperateCallback() {
+        XGPushManager.registerPush(getApplicationContext(), new XGIOperateCallback() {
             @Override
             public void onSuccess(Object data, int flag) {
                 //token在设备卸载重装的时候有可能会变
