@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // 开启debug日志数据
-        XGPushConfig.enableDebug(this,true);
+        XGPushConfig.enableDebug(this, true);
         // 开启厂商通道初始化代码
         try {
             ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
