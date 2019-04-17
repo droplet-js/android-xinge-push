@@ -1,0 +1,67 @@
+kind: pipeline
+name: default
+
+steps:
+- name: check
+  image: runmymind/docker-android-sdk
+  volumes:
+  - name: gradle
+    path: /root/.gradle
+  commands:
+  - ./gradlew clean check
+
+- name: build
+  image: runmymind/docker-android-sdk
+  volumes:
+  - name: gradle
+    path: /root/.gradle
+  commands:
+  - ./gradlew :xinge-push-android:clean :xinge-push-android:build
+  - ./gradlew :xinge-push-stub-android:clean :xinge-push-stub-android:build
+  - ./gradlew :app:clean :app:build
+
+#- name: snapshot
+#  image: runmymind/docker-android-sdk
+#  volumes:
+#  - name: gradle
+#    path: /root/.gradle
+#  environment:
+#    PUBLISH_TO_JFROG: true
+#    BINTRAY_USER:
+#      from_secret: BINTRAY_USER
+#    BINTRAY_API_KEY:
+#      from_secret: BINTRAY_API_KEY
+#    VERSION_CODE: ${DRONE_BUILD_NUMBER}
+#    VERSION_NAME: 1.0.0-SNAPSHOT
+#  commands:
+#  - ./gradlew :xinge-push-android:clean :xinge-push-android:artifactoryPublish
+#  - ./gradlew :xinge-push-stub-android:clean :xinge-push-stub-android:artifactoryPublish
+#  when:
+#    branch:
+#    - master
+#    event:
+#    - push
+
+- name: release
+  image: runmymind/docker-android-sdk
+  volumes:
+  - name: gradle
+    path: /root/.gradle
+  environment:
+    PUBLISH_TO_JCENTER: true
+    BINTRAY_USER:
+      from_secret: BINTRAY_USER
+    BINTRAY_API_KEY:
+      from_secret: BINTRAY_API_KEY
+    VERSION_CODE: ${DRONE_BUILD_NUMBER}
+    VERSION_NAME: 0.0.1 # 1.0.0
+  commands:
+  - ./gradlew :xinge-push-android:clean :xinge-push-android:bintrayUpload
+  - ./gradlew :xinge-push-stub-android:clean :xinge-push-stub-android:bintrayUpload
+  when:
+    event:
+    - tag
+
+volumes:
+- name: gradle
+  temp: {}

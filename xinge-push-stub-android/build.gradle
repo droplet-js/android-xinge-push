@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    compileOptions {
+        sourceCompatibility sourceCompatibilityVersion
+        targetCompatibility targetCompatibilityVersion
+    }
+
+    lintOptions {
+        textOutput 'stdout'
+        textReport true
+        lintConfig rootProject.file('lint.xml')
+    }
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode VERSION_CODE
+        versionName "${VERSION_NAME}"
+
+        // library 混淆 -> 随 library 引用，自动添加到 apk 打包混淆
+        consumerProguardFiles 'consumer-proguard-rules.txt'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    if (PUBLISH_TO_JFROG || PUBLISH_TO_JCENTER) {
+        implementation "${GROUP_ID}:xinge-push-android:${VERSION_NAME}"
+    } else {
+        implementation project(':xinge-push-android')
+    }
+
+    implementation 'com.tencent.xinge:mipush:4.3.2-xiaomi-beta'
+    implementation 'com.tencent.xinge:xghw:4.3.2-huawei-beta'
+    implementation 'com.tencent.xinge:xgmz:4.3.2-meizu-beta'
+}
+
+apply from: '../publish.gradle'

@@ -1,0 +1,1 @@
+include ':app', ':xinge-push-android', ':xinge-push-stub-android'

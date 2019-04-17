@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    compileOptions {
+        sourceCompatibility sourceCompatibilityVersion
+        targetCompatibility targetCompatibilityVersion
+    }
+
+    lintOptions {
+        textOutput 'stdout'
+        textReport true
+        lintConfig rootProject.file('lint.xml')
+    }
+
+    defaultConfig {
+        applicationId "io.github.v7lin.xingepush"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode VERSION_CODE
+        versionName "${VERSION_NAME}"
+
+        manifestPlaceholders = [
+                XG_ACCESS_ID: "2100250470",
+                XG_ACCESS_KEY: "A1R8TBS289UE",
+                HW_APPID: "华为的APPID",
+                XIAOMI_APPID: "小米的APPID",
+                XIAOMI_APPKEY: "小米的APPKEY",
+                MEIZU_APPID: "魅族的APPID",
+                MEIZU_APPKEY: "魅族的APPKEY"
+        ]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    if (PUBLISH_TO_JFROG || PUBLISH_TO_JCENTER) {
+        implementation "${GROUP_ID}:xinge-push-android:${VERSION_NAME}"
+        implementation "${GROUP_ID}:xinge-push-stub-android:${VERSION_NAME}"
+    } else {
+        implementation project(':xinge-push-android')
+        implementation project(':xinge-push-stub-android')
+    }
+
+    testImplementation "junit:junit:${junitVersion}"
+    androidTestImplementation "androidx.test:runner:${runnerVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
+}
