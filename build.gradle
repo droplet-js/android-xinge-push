@@ -44,6 +44,7 @@ ext {
     VERSION_NAME = buildVersionName()//'x.y.z'/'x.y.z-SNAPSHOT'
 
     REPO_NAME = repoName()
+
     SITE_URL = "https://github.com/v7lin/${REPO_NAME}"
     GIT_URL = "https://github.com/v7lin/${REPO_NAME}.git"
     ISSUE_SYSTEM = 'GitHub'
