@@ -10,6 +10,8 @@ import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 
+import xinge.push.android.XinGeConstants;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -22,17 +24,19 @@ public class MainActivity extends Activity {
         // 开启厂商通道初始化代码
         try {
             ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Log.d("TPush", "huawei appid: " + appInfo.metaData.get("com.huawei.hms.client.appid"));
-            Log.d("TPush", "xiaomi appid: " + appInfo.metaData.getString("com.xiaomi.mipush.sdk.appid"));
-            Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.getString("com.xiaomi.mipush.sdk.appkey"));
-            Log.d("TPush", "meizu appid: " + appInfo.metaData.getString("com.meizu.cloud.pushsdk.appid"));
-            Log.d("TPush", "meizu appkey: " + appInfo.metaData.getString("com.meizu.cloud.pushsdk.appkey"));
-//            XGPushConfig.enableOtherPush(getApplicationContext(), true);
-//            XGPushConfig.setHuaweiDebug(true);
-//            XGPushConfig.setMiPushAppId(getApplicationContext(), appInfo.metaData.getString("com.xiaomi.mipush.sdk.appid"));
-//            XGPushConfig.setMiPushAppKey(getApplicationContext(), appInfo.metaData.getString("com.xiaomi.mipush.sdk.appkey"));
-//            XGPushConfig.setMzPushAppId(getApplicationContext(), appInfo.metaData.getString("com.meizu.cloud.pushsdk.appid"));
-//            XGPushConfig.setMzPushAppKey(getApplicationContext(), appInfo.metaData.getString("com.meizu.cloud.pushsdk.appkey"));
+            Log.d("TPush", "xinge accessid: " + appInfo.metaData.get(XinGeConstants.META_KEY_XG_ACCESS_ID));
+            Log.d("TPush", "xinge accesskey: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XG_ACCESS_KEY));
+            Log.d("TPush", "huawei appid: " + appInfo.metaData.get(XinGeConstants.META_KEY_HW_APPID));
+            Log.d("TPush", "xiaomi appid: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPID));
+            Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPKEY));
+            Log.d("TPush", "meizu appid: " + appInfo.metaData.getString(XinGeConstants.META_KEY_MEIZU_APPID));
+            Log.d("TPush", "meizu appkey: " + appInfo.metaData.getString(XinGeConstants.META_KEY_MEIZU_APPKEY));
+            XGPushConfig.enableOtherPush(getApplicationContext(), true);
+            XGPushConfig.setHuaweiDebug(true);
+            XGPushConfig.setMiPushAppId(getApplicationContext(), appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPID));
+            XGPushConfig.setMiPushAppKey(getApplicationContext(), appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPKEY));
+            XGPushConfig.setMzPushAppId(getApplicationContext(), appInfo.metaData.getString(XinGeConstants.META_KEY_MEIZU_APPID));
+            XGPushConfig.setMzPushAppKey(getApplicationContext(), appInfo.metaData.getString(XinGeConstants.META_KEY_MEIZU_APPKEY));
         } catch (PackageManager.NameNotFoundException ignore) {
         }
         // token注册
