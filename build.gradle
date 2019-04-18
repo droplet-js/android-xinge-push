@@ -26,6 +26,11 @@ def buildVersionName() {
     return versionName != null && !versionName.isEmpty() ? versionName : '0.0.1'
 }
 
+def repoName() {
+    String repoName = System.getenv('REPO_NAME')
+    return repoName != null && !repoName.isEmpty() ? repoName : project.name
+}
+
 ext {
     PUBLISH_TO_JFROG = publishToJFrog()
 
@@ -38,10 +43,11 @@ ext {
     VERSION_CODE = buildVersionCode()
     VERSION_NAME = buildVersionName()//'x.y.z'/'x.y.z-SNAPSHOT'
 
-    SITE_URL = "https://github.com/v7lin/${project.name}"
-    GIT_URL = "https://github.com/v7lin/${project.name}.git"
+    REPO_NAME = repoName()
+    SITE_URL = "https://github.com/v7lin/${REPO_NAME}"
+    GIT_URL = "https://github.com/v7lin/${REPO_NAME}.git"
     ISSUE_SYSTEM = 'GitHub'
-    ISSUE_TRACKER_URL = "https://github.com/v7lin/${project.name}/issues"
+    ISSUE_TRACKER_URL = "https://github.com/v7lin/${REPO_NAME}/issues"
 
     LICENSE_APACHE_NAME = 'The Apache Software License, Version 2.0'
     LICENSE_APACHE_URL = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
