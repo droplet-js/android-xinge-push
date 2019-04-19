@@ -1,13 +1,15 @@
 package xinge.push.android;
 
+import com.tencent.android.tpush.XGPushConfig;
+
 public final class XinGeConstants {
 
     private XinGeConstants() {
     }
 
     // 信鸽
-    public static final String META_KEY_XG_ACCESS_ID = "XG_V2_ACCESS_ID";
-    public static final String META_KEY_XG_ACCESS_KEY = "XG_V2_ACCESS_KEY";
+    public static final String META_KEY_XG_ACCESS_ID = XGPushConfig.TPUSH_ACCESS_ID;
+    public static final String META_KEY_XG_ACCESS_KEY = XGPushConfig.TPUSH_ACCESS_KEY;
 
     // 华为
     public static final String META_KEY_HW_APPID = "com.huawei.hms.client.appid";
