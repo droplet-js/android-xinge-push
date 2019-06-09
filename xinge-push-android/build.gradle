@@ -36,10 +36,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    // 信鸽普通版本jar，不包含厂商通道
-    api 'com.tencent.xinge:xinge:4.3.2-beta'
-    api 'com.tencent.wup:wup:1.0.0.E_release'
+    //信鸽jar，不包含厂商通道
+    api 'com.tencent.xinge:xinge:4.3.2-release'
+    //wup包
+    api 'com.tencent.wup:wup:1.0.0.E-Release'
+    //jg包
     api 'com.tencent.jg:jg:1.1'
+    //mid包，minSdkVersion 14
     api 'com.tencent.mid:mid:4.0.7-Release'
 }
 

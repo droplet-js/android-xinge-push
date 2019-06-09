@@ -37,14 +37,14 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     if (PUBLISH_TO_JFROG || PUBLISH_TO_JCENTER) {
-        implementation "${GROUP_ID}:xinge-push-android:${VERSION_NAME}"
+        api "${GROUP_ID}:xinge-push-android:${VERSION_NAME}"
     } else {
-        implementation project(':xinge-push-android')
+        api project(':xinge-push-android')
     }
 
-    implementation 'com.tencent.xinge:mipush:4.3.2-xiaomi-beta'
-    implementation 'com.tencent.xinge:xghw:4.3.2-huawei-beta'
-    implementation 'com.tencent.xinge:xgmz:4.3.2-meizu-beta'
+    api 'com.tencent.xinge:mipush:4.3.2-xiaomi-release'
+    api 'com.tencent.xinge:xgmz:4.3.2-meizu-release'
+    api 'com.tencent.xinge:xghw:4.3.2-huawei-release'
 }
 
 apply from: '../publish.gradle'

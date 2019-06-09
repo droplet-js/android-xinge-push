@@ -10,7 +10,7 @@ import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 
-import xinge.push.android.XinGeConstants;
+import xinge.push.stub.android.XinGeConstants;
 
 public class MainActivity extends Activity {
 
@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
         // 开启厂商通道初始化代码
         try {
             ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Log.d("TPush", "xinge accessid: " + appInfo.metaData.get(XinGeConstants.META_KEY_XG_ACCESS_ID));
-            Log.d("TPush", "xinge accesskey: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XG_ACCESS_KEY));
+            Log.d("TPush", "xinge accessid: " + appInfo.metaData.get(XGPushConfig.TPUSH_ACCESS_ID));
+            Log.d("TPush", "xinge accesskey: " + appInfo.metaData.getString(XGPushConfig.TPUSH_ACCESS_KEY));
             Log.d("TPush", "huawei appid: " + appInfo.metaData.get(XinGeConstants.META_KEY_HW_APPID));
             Log.d("TPush", "xiaomi appid: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPID));
             Log.d("TPush", "xiaomi appkey: " + appInfo.metaData.getString(XinGeConstants.META_KEY_XIAOMI_APPKEY));

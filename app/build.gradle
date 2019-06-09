@@ -26,13 +26,14 @@ android {
         multiDexEnabled true
 
         manifestPlaceholders = [
-                XG_ACCESS_ID: "2100332123",
+                XG_ACCESS_ID : "2100332123",
                 XG_ACCESS_KEY: "AB37EUU164GF",
-                HW_APPID: "100725115",
-                XIAOMI_APPID: "2882303761517988184",
+                HW_APPID     : "100725115",
+                XIAOMI_APPID : "2882303761517988184",
                 XIAOMI_APPKEY: "5501798847184",
-                MEIZU_APPID: "1005186",
-                MEIZU_APPKEY: "c48edac06ec7407c84fdf57a3e20a729"
+                PACKAGE_NAME : "${applicationId}",// 小米通道
+                MEIZU_APPID  : "1005186",
+                MEIZU_APPKEY : "c48edac06ec7407c84fdf57a3e20a729"
         ]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
