@@ -36,7 +36,7 @@ android {
                 MEIZU_APPKEY : "c48edac06ec7407c84fdf57a3e20a729"
         ]
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -61,6 +61,6 @@ dependencies {
     }
 
     testImplementation "junit:junit:${junitVersion}"
-    androidTestImplementation "androidx.test:runner:${runnerVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
+    androidTestImplementation "com.android.support.test:runner:${runnerVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoVersion}"
 }
