@@ -16,7 +16,7 @@
 
 ````
 ext {
-    latestVersion = '4.3.2-release-SNAPSHOT'
+    latestVersion = '4.3.2-release+1-SNAPSHOT'
 }
 
 allprojects {
@@ -34,7 +34,7 @@ allprojects {
 
 ````
 ext {
-    latestVersion = '4.3.2-release'
+    latestVersion = '4.3.2-release+1'
 }
 
 allprojects {
